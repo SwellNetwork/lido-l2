@@ -31,7 +31,8 @@
     "optimism:test:integration": "hardhat test ./test/optimism/*.integration.test.ts",
     "optimism:test:acceptance": "hardhat test ./test/optimism/*.acceptance.test.ts",
     "optimism:test:executor": "hardhat test ./test/bridge-executor/optimism.integration.test.ts",
-    "optimism:test:launch": "REVERT=false hardhat test ./test/optimism/{_launch.test.ts,bridging.integration.test.ts}"
+    "optimism:test:launch": "REVERT=false hardhat test ./test/optimism/{_launch.test.ts,bridging.integration.test.ts}",
+    "swellchain:deploy": "ts-node --files ./scripts/swellchain/deploy-bridge.ts"
   },
   "keywords": [],
   "author": "",

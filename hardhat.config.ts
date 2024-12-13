@@ -83,6 +83,13 @@ const config: HardhatUserConfig = {
     opt_sepolia_fork: {
       url: "http://localhost:9545",
     },
+
+    swe_mainnet: {
+      url: env.string("RPC_SWELL_MAINNET", ""),
+    },
+    swe_sepolia: {
+      url: env.string("RPC_SWELL_SEPOLIA", ""),
+    },
   },
   gasReporter: {
     enabled: env.string("REPORT_GAS", "false") !== "false",
