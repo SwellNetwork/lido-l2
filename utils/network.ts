@@ -6,7 +6,7 @@ import { HardhatRuntimeEnvironment, HttpNetworkConfig } from "hardhat/types";
 
 import env from "./env";
 
-type ChainNameShort = "arb" | "opt" | "eth";
+type ChainNameShort = "arb" | "opt" | "eth" | "swe";
 export type NetworkName = "sepolia" | "mainnet";
 export type SignerOrProvider = Signer | Provider;
 
@@ -23,6 +23,10 @@ const HARDHAT_NETWORK_NAMES = {
     sepolia: "opt_sepolia",
     mainnet: "opt_mainnet",
   },
+  swe: {
+    sepolia: "swe_sepolia",
+    mainnet: "swe_mainnet",
+  },
 };
 
 const HARDHAT_NETWORK_NAMES_FORK = {
@@ -37,6 +41,10 @@ const HARDHAT_NETWORK_NAMES_FORK = {
   opt: {
     sepolia: "opt_sepolia_fork",
     mainnet: "opt_mainnet_fork",
+  },
+  swe: {
+    sepolia: "swe_sepolia_fork",
+    mainnet: "swe_mainnet_fork",
   },
 };
 
@@ -129,6 +137,10 @@ function getChainId(protocol: ChainNameShort, networkName: NetworkName) {
       mainnet: 42161,
       sepolia: 421613,
     },
+    swe:{
+      mainnet: 1923,
+      sepolia: 1924,
+    }
   };
   const chainId = chainIds[protocol][networkName];
   if (!chainId) {
@@ -148,6 +160,9 @@ function getBlockExplorerBaseUrlByChainId(chainId: number) {
     // optimism
     10: "https://optimistic.etherscan.io",
     11155420: "https://blockscout.com/optimism/sepolia",
+    // swellchain
+    1923: "https://swell-mainnet.alt.technology",
+    1924: "https://swell-testnet.alt.technology",
     // forked node
     31337: "https://etherscan.io",
   };
