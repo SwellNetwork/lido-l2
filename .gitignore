@@ -1,5 +1,6 @@
 node_modules
 .env
+.env.wsteth.swe_mainnet
 coverage
 coverage.json
 typechain

@@ -31,7 +31,8 @@
     "optimism:test:integration": "hardhat test ./test/optimism/*.integration.test.ts",
     "optimism:test:acceptance": "hardhat test ./test/optimism/*.acceptance.test.ts",
     "optimism:test:executor": "hardhat test ./test/bridge-executor/optimism.integration.test.ts",
-    "optimism:test:launch": "REVERT=false hardhat test ./test/optimism/{_launch.test.ts,bridging.integration.test.ts}"
+    "optimism:test:launch": "REVERT=false hardhat test ./test/optimism/{_launch.test.ts,bridging.integration.test.ts}",
+    "swellchain:deploy": "ts-node --files ./scripts/swellchain/deploy-bridge.ts"
   },
   "keywords": [],
   "author": "",
@@ -44,7 +45,7 @@
     "@typechain/hardhat": "^2.3.1",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^12.20.47",
+    "@types/node": "^12.20.55",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "chai": "^4.3.6",
@@ -73,6 +74,7 @@
     "@eth-optimism/sdk": "3.2.0",
     "@ethersproject/providers": "^5.6.8",
     "@lidofinance/evm-script-decoder": "^0.2.2",
+    "@nomicfoundation/hardhat-verify": "^2.0.7",
     "@openzeppelin/contracts": "4.6.0",
     "chalk": "4.1.2"
   }

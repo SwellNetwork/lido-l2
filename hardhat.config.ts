@@ -1,11 +1,12 @@
 import * as dotenv from "dotenv";
 
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
+//import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import "@nomicfoundation/hardhat-verify";
 
 import "./tasks/fork-node";
 import env from "./utils/env";
@@ -83,6 +84,13 @@ const config: HardhatUserConfig = {
     opt_sepolia_fork: {
       url: "http://localhost:9545",
     },
+
+    swe_mainnet: {
+      url: env.string("RPC_SWELL_MAINNET", ""),
+    },
+    swe_sepolia: {
+      url: env.string("RPC_SWELL_SEPOLIA", ""),
+    },
   },
   gasReporter: {
     enabled: env.string("REPORT_GAS", "false") !== "false",
@@ -94,27 +102,36 @@ const config: HardhatUserConfig = {
       sepolia: env.string("ETHERSCAN_API_KEY_ETH", ""),
       arbitrumOne: env.string("ETHERSCAN_API_KEY_ARB", ""),
       optimisticEthereum: env.string("ETHERSCAN_API_KEY_OPT", ""),
-      "opt_sepolia": env.string("ETHERSCAN_API_KEY_OPT", ""),
+      opt_sepolia: env.string("ETHERSCAN_API_KEY_OPT", ""),
+      swe_mainnet: env.string("ETHERSCAN_API_KEY_ETH", ""),
     },
 
     customChains: [
-        {
-          network: 'sepolia',
-          chainId: 11155111,
-          urls: {
-            apiURL: 'https://api-sepolia.etherscan.io/api',
-            browserURL: 'https://sepolia.etherscan.io',
-          },
+      {
+        network: "sepolia",
+        chainId: 11155111,
+        urls: {
+          apiURL: "https://api-sepolia.etherscan.io/api",
+          browserURL: "https://sepolia.etherscan.io",
         },
-        {
-            network: 'opt_sepolia',
-            chainId: 11155420,
-            urls: {
-              apiURL: 'https://api-sepolia-optimism.etherscan.io/api',
-              browserURL: 'https://sepolia-optimism.etherscan.io',
-            },
-          },
-      ],
+      },
+      {
+        network: "opt_sepolia",
+        chainId: 11155420,
+        urls: {
+          apiURL: "https://api-sepolia-optimism.etherscan.io/api",
+          browserURL: "https://sepolia-optimism.etherscan.io",
+        },
+      },
+      {
+        network: "swe_mainnet",
+        chainId: 1923,
+        urls: {
+          apiURL: "https://explorer.swellnetwork.io/api",
+          browserURL: "https://explorer.swellnetwork.io",
+        },
+      },
+    ],
   },
   typechain: {
     externalArtifacts: [

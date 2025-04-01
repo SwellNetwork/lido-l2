@@ -172,6 +172,7 @@ export class DeployScript {
       31337: "hardhat",
       42161: "arb_mainnet",
       421613: "arb_sepolia",
+      1923: "swe_mainnet",
     };
     const networkName = networkNameByChainId[chainId] || "<NETWORK_NAME>";
     const arsString = stepInfo.args.map((a) => `"${a.value}"`).join(" ");
